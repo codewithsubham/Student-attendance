@@ -4,7 +4,7 @@ install_path = "/Users/subham/python/studentAttendance/local/"
 
 update_file_list = ["main_loop.py", "sync.py"]
 
-
+#asdad
 def check_remote_update(filename):
     file_url = update_path + filename
     res = urllib.request.urlopen(file_url)
