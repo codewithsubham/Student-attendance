@@ -1,0 +1,52 @@
+// for directory checking
+
+def push_transaction(file_index = 0):
+    
+    using recursion function
+
+    file = os.listdir(BUFFER_FOLDER_PATH)
+    if len(file) > 0:
+      transactions_data = open(BUFFER_FOLDER_PATH+file[file_index] , "rb")
+      transactions_entries = len(open(BUFFER_FOLDER_PATH+file[file_index], 'r').read().split('\n'))
+      print(transactions_data)
+      if not httpcall_transaction(transactions_data , transactions_entries , 'admin' , 'Asd@12345'):
+            return push_transaction(file_index) 
+      else:
+          #remove file from buffer directory
+          os.remove(BUFFER_FOLDER_PATH+file[file_index])
+          return push_transaction(0)
+    else:
+      print('no file to upload')
+      return True
+
+
+def check_file_buffer():
+  #open buffer file 
+    
+    if not os.path.exists(FOLDER_PATH_BUFFER):
+      # print('folder does not exits')
+      # create a file 
+      # os.makedirs return true if there is was error while creating file
+      try:
+        if not os.makedirs(FOLDER_PATH_BUFFER):
+           return True
+      except:
+        print('error while creating Buffer directory')
+        return  False
+    else:
+      return True
+      
+def check_assests_file():
+  #open buffer file 
+    
+    if not os.path.exists(FOLDER_PATH_ASSEST):
+      # print('folder does not exits')
+      # create a file 
+      # os.makedirs return true if there is was error while creating file
+      if  os.makedirs(FOLDER_PATH_ASSEST):
+          print('error while creating directory')
+          return False
+      else:
+        return  True
+    else:
+      return True
